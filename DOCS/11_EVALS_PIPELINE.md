@@ -205,7 +205,7 @@ If both ran on the same key, a single eval run would rate-limit your live app mi
 
 With 10s delay between calls: ~3.5 min. Daily limit for 70b: 100,000 TPD ✅
 
-#### Phase 2 — RAGAS Metrics (`JUDGE_GROQ`, llama-3.1-8b-instant)
+#### Phase 2 — RAGAS Metrics (`JUDGE_GROQ`, openai/gpt-oss-20b)
 
 **Actual TPM tier: 6,000 on_demand** (not 14,400 — confirmed from live 413/429 errors).
 

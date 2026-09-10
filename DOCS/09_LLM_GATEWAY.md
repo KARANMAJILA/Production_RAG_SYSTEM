@@ -95,6 +95,12 @@ graph LR
 | **Provider slug** | `flight-policsy` | *Which provider / model?* |
 | **Config ID** | `pc-ssss-d8a1e4` | *How to route, retry, cache?* |
 
+The config ID must be a saved Portkey config slug. Set it as `PORTKEY_CONFIG` in `.env`;
+inline configuration dictionaries are rejected when `block_inline_config` is enabled.
+Provider slugs are separate values: set `GROQ_SLUG` and `GROQ_FALLBACK_SLUG` to the
+provider names configured in the Portkey dashboard (the application defaults to `rag`
+and `brag`).
+
 ---
 
 ## Feature 1 — Basic Routing (Observability for Free)
@@ -219,7 +225,7 @@ portkey = Portkey(api_key=PORTKEY_API_KEY, config={
     "strategy": {"mode": "fallback"},
     "targets": [
         {"override_params": {"model": "@flight-policsy/llama-3.3-70b-versatile"}},  # primary
-        {"override_params": {"model": "@flight-policy/llama-3.1-8b-instant"}}       # fallback
+        {"override_params": {"model": "@flight-policy/openai/gpt-oss-20b"}}       # fallback
     ]
 })
 ```
@@ -252,7 +258,7 @@ portkey = Portkey(api_key=PORTKEY_API_KEY, config={
     "strategy": {"mode": "loadbalance"},
     "targets": [
         {"override_params": {"model": "@flight-policsy/llama-3.3-70b-versatile"}, "weight": 0.7},
-        {"override_params": {"model": "@flight-policy/llama-3.1-8b-instant"},     "weight": 0.3}
+        {"override_params": {"model": "@flight-policy/openai/gpt-oss-20b"},     "weight": 0.3}
     ]
 })
 ```
@@ -402,7 +408,7 @@ PRODUCTION_CONFIG = {
     "cache": {"mode": "simple"},
     "targets": [
         {"override_params": {"model": "@flight-policsy/llama-3.3-70b-versatile"}},
-        {"override_params": {"model": "@flight-policy/llama-3.1-8b-instant"}}
+        {"override_params": {"model": "@flight-policy/openai/gpt-oss-20b"}}
     ]
 }
 
@@ -578,7 +584,7 @@ GATEWAY_CONFIG = {
     },
     "targets": [
         {"override_params": {"model": "@rag/llama-3.3-70b-versatile"}},    # primary
-        {"override_params": {"model": "@brag/llama-3.1-8b-instant"}},      # fallback
+        {"override_params": {"model": "@brag/openai/gpt-oss-20b"}},      # fallback
     ]
 }
 ```

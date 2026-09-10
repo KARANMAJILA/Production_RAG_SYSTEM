@@ -476,7 +476,7 @@ def guard(message: str) -> tuple[bool, str | None]:
 ```
 
 Two models are used deliberately:
-- `llama-3.1-8b-instant` for the guardrail gate — fast, cheap, only doing intent classification
+- `openai/gpt-oss-20b` for the guardrail gate — fast, cheap, only doing intent classification
 - `llama-3.3-70b-versatile` for the RAG pipeline — stays for generation quality
 
 ---

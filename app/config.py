@@ -11,7 +11,10 @@ class Settings:
     QDRANT_CLUSTER_ENDPOINT = os.getenv("QDRANT_CLUSTER_ENDPOINT")
     GOOGLE_GEMINI_KEY = os.getenv("GOOGLE_GEMINI_KEY")
     QDRANT_COLLECTION = "enterprise_rag"
-    GROQ_MODEL = "llama-3.3-70b-versatile"
+    GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+    PORTKEY_API_KEY = os.getenv("PORTKEY_API_KEY")
+    PORTKEY_CONFIG = os.getenv("PORTKEY_CONFIG")
+    QDRANT_URL = f"{QDRANT_CLUSTER_ENDPOINT}?api_key={QDRANT_API_KEY}"
 
 
 settings = Settings()
